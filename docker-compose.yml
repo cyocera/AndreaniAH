@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  apigeo:
+    image: ${DOCKER_REGISTRY-}apigeo
+    build:
+      context: .
+      dockerfile: ApiGeo/Dockerfile
+    ports:
+     - 40001:80
+    depends_on: [ mssql, rabbitmq ]  
+
+  geocodificador:
+    image: ${DOCKER_REGISTRY-}geocodificador
+    build:
+      context: .
+      dockerfile: Geocodificador/Dockerfile
+    ports:
+     - 8080:80
+
+  mssql:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: mssql
+    hostname: mssql
+    environment:
+      SA_PASSWORD: "Admin2024"
+      ACCEPT_EULA: "Y"
+    restart: unless-stopped    
+    ports:
+      - "14333:1433"
+
+  rabbitmq: # login guest:guest
+    image: rabbitmq:3.11-management
+    hostname: "rabbitmq"
+    labels:
+      NAME: "rabbitmq"
+    ports:
+    - "4369:4369"
+    - "5671:5671"
+    - "5672:5672"
+    - "25672:25672"
+    - "15671:15671"
+    - "15672:15672"

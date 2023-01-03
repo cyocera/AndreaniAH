@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "1d991fd5-5fc4-48fd-88f7-c670c8827438",
+		"name": "AndreaniTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1573589"
+	},
+	"item": [
+		{
+			"name": "geolocalizar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"calle\": \"rodriguez peña\",\r\n    \"numero\": \"94\",\r\n    \"ciudad\": \"capital federal\",\r\n    \"código_postal\": \"1020\",\r\n    \"provincia\": \"buenos aires\",\r\n    \"pais\": \"argentina\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:40001/Geolocator/geolocalizar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "40001",
+					"path": [
+						"Geolocator",
+						"geolocalizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "geocodificar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:40001/Geolocator/geocodificar?id=9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "40001",
+					"path": [
+						"Geolocator",
+						"geocodificar"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "processdirection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"calle\": \"rodriguez peña\",\r\n    \"numero\": \"94\",\r\n    \"ciudad\": \"capital federal\",\r\n    \"código_postal\": \"1020\",\r\n    \"provincia\": \"buenos aires\",\r\n    \"pais\": \"argentina\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/DirecctionProcess/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"DirecctionProcess",
+						"process"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
